@@ -13,6 +13,7 @@ let timerText = document.querySelector('.timer');
 // app states
 let moves = 0;
 let watch = new StopWatch();
+let clicks = {};
 
 
 //开始计时
@@ -27,7 +28,7 @@ function cardsInit(){
 	// shuffle
 	cardArray = shuffle(cardArray);
 	// generate html
-	html = generateGameborad(cardArray);
+	// html = generateGameborad(cardArray);
 	// remove origin
 	let deck = document.querySelector(".deck")
 	deck.innerHTML = ''
@@ -66,7 +67,31 @@ function addMoveCount(){
 	showMoves();
 }
 
+function click(){
+	console.log('its a click.');
+	alterCard(this,true,true);
+	
+	console.log(this);
+	clicks.add(this);
+}
 
+
+function alterCard(card,open,show){	
+	if (open) {
+		card.classList.add('open');	
+	}
+	else{
+		card.classList.remove('open');
+	}
+	if(show){
+		card.classList.add('show');	
+	}
+	else{
+		card.classList.remove('show');
+	}
+	
+	
+}
 
 // $(".card").on('click',function(){
 // 	moves ++;
@@ -137,7 +162,8 @@ function generateGameborad(array){
 		i.className = 'fa '+item;
 
 		li.appendChild(i);
-		deck.appendChild(li);		
+		deck.appendChild(li);
+		li.addEventListener('click',click);		
 	})	
 }
 
