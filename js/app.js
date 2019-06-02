@@ -3,6 +3,47 @@
  */
 
 
+let cardArray = ["fa-diamond","fa-paper-plane-o","fa-anchor","fa-bolt","fa-cube","fa-leaf","fa-bomb","fa-bicycle","fa-diamond","fa-paper-plane-o","fa-anchor","fa-bolt","fa-cube","fa-leaf","fa-bomb","fa-bicycle"];
+function cardsInit(){
+	// shuffle
+	cardArray = shuffle(cardArray);
+	// generate html
+	html = generateGameborad(cardArray);
+	// remove origin
+	let deck = document.querySelectorAll('body > div > ul > li');
+	deck.forEach(function(element){element.parentNode.removeChild(element)});
+	// add new html
+	generateGameborad(cardArray);
+	// generateGameborad(cardArray);
+	console.log(cardArray);
+}
+cardsInit();
+
+
+// function createCard(className){
+// 	shuffle(cardArray);
+	
+// 	var element = document.createElement(tagname","options);
+// }
+
+
+// let moves = 0
+
+// function addMoveCount(){
+// 	moves+=1;
+// }
+
+
+
+// $(".card").on('click',function(){
+// 	moves ++;
+// 	moves == 1 ? setInterval(setTime, 1000) : '';
+// 	$(this).attr('disabled','disabled');
+// 	matcher(this);
+// })
+
+
+
 /*
  * 显示页面上的卡片
  *   - 使用下面提供的 "shuffle" 方法对数组中的卡片进行洗牌
@@ -12,19 +53,23 @@
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
 
-    return array;
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
-
 
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
@@ -36,3 +81,37 @@ function shuffle(array) {
  *    + 增加移动计数器并将其显示在页面上（将这个功能放在你从这个函数中调用的另一个函数中）
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
+
+
+// 翻转卡片
+
+// 匹配卡片
+// 
+
+
+
+// 填充ul
+function generateGameborad(array){
+
+	let deck = document.querySelector('.deck');
+
+	let result = "";
+	array.forEach(function(item){
+		
+		let li = document.createElement('li');
+		li.className = 'card';
+		let i = document.createElement('i');
+		i.className = 'fa '+item;
+
+		li.appendChild(i);
+		deck.appendChild(li);		
+	})	
+}
+
+// function compareCards(cardA","cardB){
+
+// }
+
+// function gameOver(){
+
+// }
