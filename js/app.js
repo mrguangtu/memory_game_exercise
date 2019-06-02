@@ -12,6 +12,7 @@ let movesText = document.querySelector('.moves');
 // app states
 let moves = 0;
 
+//初始化游戏
 function cardsInit(){
 	// shuffle
 	cardArray = shuffle(cardArray);
@@ -22,19 +23,23 @@ function cardsInit(){
 	deck.innerHTML = ''
 	// add new html
 	generateGameborad(cardArray);
-	
+	moves = 0;
 	showMoves();
 	
 }
 
+//减少游戏评级
 function removeStar(){
 	child = starSection.children[0];	
 	starSection.removeChild(child);	
 }
 
-
+//评估游戏评分难度，展示步数
 function showMoves(){
 	movesText.innerText = moves;
+	if (moves === 8 || moves ===12 || moves ===18 ) {
+		removeStar();
+	}
 }
 
 // function createCard(className){
