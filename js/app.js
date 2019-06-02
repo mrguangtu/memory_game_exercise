@@ -4,6 +4,14 @@
 
 
 let cardArray = ["fa-diamond","fa-paper-plane-o","fa-anchor","fa-bolt","fa-cube","fa-leaf","fa-bomb","fa-bicycle","fa-diamond","fa-paper-plane-o","fa-anchor","fa-bolt","fa-cube","fa-leaf","fa-bomb","fa-bicycle"];
+
+let starSection = document.querySelector('.stars');
+let restartBtn = document.querySelector('.restart');
+let movesText = document.querySelector('.moves');
+
+// app states
+let moves = 0;
+
 function cardsInit(){
 	// shuffle
 	cardArray = shuffle(cardArray);
@@ -14,18 +22,20 @@ function cardsInit(){
 	deck.innerHTML = ''
 	// add new html
 	generateGameborad(cardArray);
-	// generateGameborad(cardArray);
-	console.log(cardArray);
+	
+	showMoves();
+	
 }
-cardsInit();
+
+function removeStar(){
+	child = starSection.children[0];	
+	starSection.removeChild(child);	
+}
 
 
-
-// elements
-
-
-// app states
-
+function showMoves(){
+	movesText.innerText = moves;
+}
 
 // function createCard(className){
 // 	shuffle(cardArray);
@@ -34,11 +44,12 @@ cardsInit();
 // }
 
 
-// let moves = 0
+cardsInit();
 
-// function addMoveCount(){
-// 	moves+=1;
-// }
+function addMoveCount(){
+	moves+=1;
+	showMoves();
+}
 
 
 
