@@ -8,9 +8,19 @@ let cardArray = ["fa-diamond","fa-paper-plane-o","fa-anchor","fa-bolt","fa-cube"
 let starSection = document.querySelector('.stars');
 let restartBtn = document.querySelector('.restart');
 let movesText = document.querySelector('.moves');
+let timerText = document.querySelector('.timer');
 
 // app states
 let moves = 0;
+let watch = new StopWatch();
+
+
+//开始计时
+function startTimer(){
+	watch.startTimer(function(){
+		timerText.innerText = watch.getTimeString();
+	})
+}
 
 //初始化游戏
 function cardsInit(){
