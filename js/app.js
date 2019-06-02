@@ -10,14 +10,21 @@ function cardsInit(){
 	// generate html
 	html = generateGameborad(cardArray);
 	// remove origin
-	let deck = document.querySelectorAll('body > div > ul > li');
-	deck.forEach(function(element){element.parentNode.removeChild(element)});
+	let deck = document.querySelector(".deck")
+	deck.innerHTML = ''
 	// add new html
 	generateGameborad(cardArray);
 	// generateGameborad(cardArray);
 	console.log(cardArray);
 }
 cardsInit();
+
+
+
+// elements
+
+
+// app states
 
 
 // function createCard(className){
