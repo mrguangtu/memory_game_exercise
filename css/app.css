@@ -107,3 +107,59 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+
+/*
+ * Styles for the score-panel Score Panel
+ */
+ .pop {
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+}
+.pop-all {
+  position: relative;
+  width: 400px;
+  top: 20%;
+  left: 20%;
+  background: #fff;
+  transform: translate(-50%, -70%);
+}
+.pop-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 1px solid gray;
+}
+.pop-close {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.pop-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 2px solid gray;
+}
+.pop-button {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+button {
+  height: 30px;
+  width: 60px;
+}
+.hide {
+  display: none;
+}
