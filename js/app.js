@@ -9,11 +9,14 @@ let starSection = document.querySelector('.stars');
 let restartBtn = document.querySelector('.restart');
 let movesText = document.querySelector('.moves');
 let timerText = document.querySelector('.timer');
+restartBtn.addEventListener('click',cardsInit);
 
 // app states
 let moves = 0;
 let watch = new StopWatch();
-let clicks = {};
+let click1 = '';
+let click2 = '';
+let isFirstMove = true;
 
 
 //开始计时
@@ -36,7 +39,11 @@ function cardsInit(){
 	generateGameborad(cardArray);
 	moves = 0;
 	showMoves();
-	
+	watch = new StopWatch();
+	isFirstMove = true;
+	click1 = '';
+	click2 = '';
+	timerText.innerText = '0:00:00';
 }
 
 //减少游戏评级
@@ -68,13 +75,42 @@ function addMoveCount(){
 }
 
 function click(){
-	console.log('its a click.');
+	if (isFirstMove) {
+		isFirstMove = false;
+		startTimer();
+	}
 	alterCard(this,true,true);
+	if (click1 ===  '') {
+		click1 = this;
+		return;	
+	}
+	else{
+		click2 = this;
+		addMoveCount();
+		//判定是否匹配
+		if (isMatch(click1,click2)) {
+			alterCard(click1,true,true);
+			alterCard(click2,true,true);			
+		}
+		//不匹配，翻回去
+		else{
+			alterCard(click1,false,false);
+			alterCard(click2,false,false);
+		}
+		//清空临时记录的值
+		click1='';
+		click2='';
+	}
 	
-	console.log(this);
-	clicks.add(this);
 }
 
+//判断是否匹配
+function isMatch(click1,click2){
+	if (click1.querySelector('i').className === click2.querySelector('i').className){
+		return true;
+	}else return false;
+
+}
 
 function alterCard(card,open,show){	
 	if (open) {
